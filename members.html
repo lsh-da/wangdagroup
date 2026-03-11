@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成员介绍 - 王达课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+        .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
+        .nav-link:hover { color: #004299; }
+        .active-nav { color: #004299; border-bottom: 3px solid #004299; }
+
+        /* 成员卡片悬停效果 */
+        .member-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .member-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+
+        /* 核心修改：使用 cover 填满，使用 top 确保头顶不被裁 */
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      /* 强制填满，不留灰色背景 */
+            object-position: top;   /* 关键：从头顶开始对齐，裁切只发生在底部 */
+            display: block;
+        }
+
+        .photo-wrapper {
+            aspect-ratio: 3 / 4;    /* 统一比例 */
+            width: 100%;
+            overflow: hidden;
+            background: #fff;       /* 万一加载失败显示白色 */
+        }
+
+        /* 折叠详情动画 */
+        .bio-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        .bio-details.open {
+            max-height: 2000px;
+            opacity: 1;
+            padding-top: 1.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .section-title-sm {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 4px;
+        }
+        .journal-tag { background: #eff6ff; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-style: italic; font-size: 0.75rem; border: 1px solid #dbeafe; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- 导航栏 -->
+    <header class="border-b shadow-sm sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center py-4">
+                <div class="text-2xl font-bold text-blue-900 tracking-tighter">
+                    <span class="bg-blue-900 text-white px-2 py-1 rounded mr-2">W</span>DA GROUP
+                </div>
+            </div>
+            <nav class="flex">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="members.html" class="nav-link active-nav">成员介绍</a>
+                <a href="publications.html" class="nav-link">成果发表</a>
+                <a href="activities.html" class="nav-link">活动专栏</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题区 -->
+    <section class="bg-blue-900 py-16 text-white text-center">
+        <h1 class="text-4xl font-bold mb-4">团队成员</h1>
+        <p class="text-blue-200">一支充满活力、跨学科、追求卓越的研究团队</p>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 py-16 space-y-20">
+
+       <!-- 1. PI 介绍 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 border-l-4 border-blue-900 pl-4">首席研究员 (PI)</h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="p-8 flex flex-col md:flex-row gap-10">
+                    <div class="w-full md:w-64 h-80 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
+                        <img src="images/members/wangda.jpg" alt="王达" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <div class="flex-1 space-y-4">
+                        <h3 class="text-3xl font-bold text-slate-900">王达 <span class="text-xl font-normal text-slate-500 ml-2">研究员 / 博士生导师</span></h3>
+                        <p class="text-blue-700 font-medium italic">华南师范大学 华南先进光电子研究院</p>
+                        <p class="text-slate-600 leading-relaxed">主要从事软物质材料、胶体纳米晶体自组装及先进透射电子显微学研究。国家优秀青年科学基金（海外）获得者。</p>
+                        <div class="flex items-center text-blue-900 font-semibold"><i data-lucide="mail" class="w-5 h-5 mr-2"></i> da.wang@m.scnu.edu.cn</div>
+                        <button onclick="toggleBio('bio-wangda')" class="mt-4 flex items-center text-blue-700 font-bold hover:text-blue-900 border border-blue-100 px-6 py-2 rounded-full hover:bg-blue-50 transition-all">
+                            <span id="btn-text-bio-wangda">查看完整履历与人才培养计划</span>
+                            <i data-lucide="chevron-down" id="icon-bio-wangda" class="ml-1 w-5 h-5 transition-transform"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="bio-wangda" class="bio-details bg-slate-50 px-8">
+                    <div class="border-t border-slate-200 pt-8 pb-4">
+                        <div class="grid md:grid-cols-2 gap-12 mb-8">
+                            <div>
+                                <h4 class="section-title-sm">教育经历</h4>
+                                <ul class="text-sm text-slate-600 space-y-2">
+                                    <li><strong>2012-2018：</strong>荷兰乌特勒支大学，博士（导师：Alfons van Blaaderen教授）</li>
+                                    <li><strong>2014, 2016：</strong>美国宾夕法尼亚大学，访问学生（导师：Christopher B. Murray教授）</li>
+                                    <li><strong>2009-2012：</strong>南开大学化学学院，硕士（导师：张望清教授）</li>
+                                    <li><strong>2005-2009：</strong>南开大学化学学院基地班，学士</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="section-title-sm">工作经历</h4>
+                                <p class="text-sm text-slate-600 mb-4"><strong>2022.09-至今：</strong>华南师范大学，教授/研究员</p>
+                                <p class="text-sm text-slate-600 mb-4"><strong>2018.11-2022.08：</strong>比利时安特卫普电镜中心，博士后（玛丽居里学者）</p>
+                                <h4 class="section-title-sm">科研项目</h4>
+                                <ul class="text-xs text-slate-600">
+                                    <li>• 国家优秀青年科学基金项目（海外），主持</li>
+                                    <li>• 国家自然科学基金面上项目，主持</li>
+                                    <li>• 科技部外专项目，主持</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 人才培养 -->
+                        <div class="bg-blue-900 text-white p-8 rounded-2xl shadow-md mb-8">
+                            <h4 class="text-xl font-bold mb-4 flex items-center">
+                                <i data-lucide="user-plus" class="w-6 h-6 mr-2"></i> 人才培养
+                            </h4>
+                            <p class="text-blue-50 leading-relaxed mb-6">
+                                欢迎有志于从事<strong>胶体可控组装、合成及其应用</strong>，以及<strong>先进透射电镜技术</strong>研究的广大优秀青年学者和考生加入课题组，同时鼓励有科研热情的本科生开展探索创新研究。
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="bg-white/10 p-4 rounded-lg">
+                                    <h5 class="font-bold mb-1">岗位招收</h5>
+                                    <p class="text-sm text-blue-100">常年招收青年英才、博士后、博士研究生</p>
+                                </div>
+                                <div class="bg-white/10 p-4 rounded-lg">
+                                    <h5 class="font-bold mb-1">硕士招生专业</h5>
+                                    <p class="text-sm text-blue-100">学术型：化学、物理背景<br>专业型：新一代电子信息技术</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 2. 核心研究人员 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-8 border-l-4 border-blue-700 pl-4">核心研究人员</h2>
+            <div class="space-y-8">
+                <!-- 王颂老师 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden px-8 pt-8">
+                    <div class="flex flex-col md:flex-row gap-8 pb-8">
+                        <div class="w-full md:w-48 h-60 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
+                            <img src="images/members/wangsong.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="text-2xl font-bold text-slate-900">王颂 <span class="text-lg font-normal text-slate-500 ml-2">特聘副研究员</span></h3>
+                            <p class="text-slate-600 text-sm">2020年毕业于中科院化学所。长期从事胶体纳米晶体合成、组装及光学性质研究。</p>
+                            <div class="text-blue-900 text-sm font-medium"><i data-lucide="mail" class="inline w-4 h-4 mr-1"></i> wangsong@scnu.edu.cn</div>
+                            <button onclick="toggleBio('bio-wangsong')" class="mt-2 flex items-center text-blue-700 text-sm font-bold">
+                                <span id="btn-text-bio-wangsong">展开个人简介与研究方向</span>
+                                <i data-lucide="chevron-down" id="icon-bio-wangsong" class="ml-1 w-4 h-4 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="bio-wangsong" class="bio-details bg-slate-50 px-6">
+                        <div class="border-t pt-4 grid md:grid-cols-2 gap-8">
+                            <div class="text-xs text-slate-600 space-y-2">
+                                <h4 class="section-title-sm">教育及工作经历</h4>
+                                <p><strong>2023.09至今：</strong>华南师范大学 特聘副研究员</p>
+                                <p><strong>2020.12-2023.08：</strong>清华大学化学系 博士后</p>
+                                <p><strong>2017.09-2020.06：</strong>中科院化学所 博士</p>
+                                <p><strong>2014.09-2017.06：</strong>山东大学 硕士</p>
+                                <p><strong>2009.09-2013.06：</strong>中国海洋大学 学士</p>
+                            </div>
+                            <div class="text-xs text-slate-600 space-y-2">
+                                <h4 class="section-title-sm">研究方向</h4>
+                                <p>1. 胶体可控合成、组装及先进电镜组装机理研究</p>
+                                <p>2. 手性纳米晶体合成、手性超结构组装及手性光学性质研究</p>
+                                <p class="pt-2 font-bold">个人简介：</p>
+                                <p>发表SCI论文17篇（一作/通讯7篇），国家发明专利授权2项。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 陈子韬老师 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden px-8 pt-8">
+                    <div class="flex flex-col md:flex-row gap-8 pb-8">
+                        <div class="w-full md:w-48 h-60 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
+                            <img src="images/members/chenzitao.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="text-2xl font-bold text-slate-900">陈子韬 <span class="text-lg font-normal text-slate-500 ml-2">特聘研究员</span></h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">2020年获华南理工大学博士学位。主要从事凝聚态物理功能材料结构对称性破缺及其物性调控研究。</p>
+                            <div class="text-blue-900 text-sm font-medium"><i data-lucide="mail" class="inline w-4 h-4 mr-1"></i> zitao_chen@scnu.edu.cn</div>
+                            <button onclick="toggleBio('bio-chenzitao')" class="mt-2 flex items-center text-blue-700 text-sm font-bold">
+                                <span id="btn-text-bio-chenzitao">展开详细信息及招生说明</span>
+                                <i data-lucide="chevron-down" id="icon-bio-chenzitao" class="ml-1 w-4 h-4 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="bio-chenzitao" class="bio-details bg-slate-50 px-6">
+                        <div class="border-t pt-4 space-y-6">
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="text-xs text-slate-600 space-y-3">
+                                    <h4 class="section-title-sm">教育及工作履历</h4>
+                                    <p><strong>2020：</strong>华南理工大学博士学位（本硕博连读）</p>
+                                    <p><strong>2017：</strong>获国家留学基金资助赴美国<strong>佐治亚理工学院</strong>联合培养</p>
+                                    <p><strong>2018-2019：</strong><strong>橡树岭国家实验室</strong>电镜中心访问研究</p>
+                                    <p><strong>博士后：</strong>中国科学院物理研究所表面室（白雪冬、田学增课题组）</p>
+                                </div>
+                                <div class="text-xs text-slate-600 space-y-3">
+                                    <h4 class="section-title-sm">研究领域与成果</h4>
+                                    <p>在原子尺度探索材料结构序参量变化而涌现的新奇物理现象。近五年发表30余篇SCI论文。</p>
+                                    <div class="flex flex-wrap gap-2 mt-2">
+                                        <span class="journal-tag">Advanced Materials</span>
+                                        <span class="journal-tag">JACS</span>
+                                        <span class="journal-tag">Nano Letters</span>
+                                        <span class="journal-tag">ACS Nano</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-blue-100/50 p-4 rounded-xl border border-blue-200">
+                                <h4 class="text-sm font-bold text-blue-900 mb-2">招生与实习</h4>
+                                <p class="text-xs text-slate-600">欢迎具有物理、材料、微电子背景的学生联系报考，也欢迎有兴趣的本科生来组实习。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 谢晓滨老师 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8">
+                    <div class="w-full md:w-48 h-60 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
+                        <img src="images/members/xiexiaobin.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900">谢晓滨 <span class="text-lg font-normal text-slate-500 ml-2">研究人员</span></h3>
+                        <p class="text-slate-500 italic mt-4">简介正在整理中...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 博士研究生 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-10 border-l-4 border-blue-900 pl-4">博士研究生</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- 修改：aspect-square 改为 aspect-[3/4] 更适合证件照比例 -->
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden">
+                        <img src="images/members/shenbohan.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <h4 class="font-bold text-slate-900">沈博涵</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden">
+                        <img src="images/members/zhouyuduo.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <h4 class="font-bold text-slate-900">周玉铎</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 硕士研究生 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-10 border-l-4 border-blue-900 pl-4">硕士研究生</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/dengshaobo.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">邓少博</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/cailiye.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">蔡礼烨</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/daisiqi.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">戴思棋</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/chenyiqi.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">陈祎琪</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/xiaochuying.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">肖楚莹</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/luhongyu.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">陆鸿宇</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/yuhaodong.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">于浩东</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/longjinlu.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">龙锦禄</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/lishuhao.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">李书豪</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/zhangyang.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">张扬</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/wangxiaoqing.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">王晓庆</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-slate-50 rounded-lg mb-3 overflow-hidden"><img src="images/members/luoyaqi.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'"></div>
+                    <h4 class="font-bold text-slate-900">罗亚琦</h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 硕士毕业生 -->
+        <section>
+            <h2 class="text-2xl font-bold mb-10 border-l-4 border-blue-400 pl-4">硕士毕业生</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-emerald-50 rounded-lg mb-3 overflow-hidden">
+                        <img src="images/members/zhangminrui.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <h4 class="font-bold text-slate-900">张敏锐</h4>
+                </div>
+                <div class="member-card bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="aspect-[3/4] bg-emerald-50 rounded-lg mb-3 overflow-hidden">
+                        <img src="images/members/caodi.jpg" class="member-photo" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                    </div>
+                    <h4 class="font-bold text-slate-900">曹迪</h4>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© Wang Research Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleBio(id) {
+            const bio = document.getElementById(id);
+            const btnText = document.getElementById('btn-text-' + id);
+            const icon = document.getElementById('icon-' + id);
+
+            if (bio.classList.contains('open')) {
+                bio.classList.remove('open');
+                if (id === 'bio-wangda') btnText.innerText = '查看完整履历与人才培养计划';
+                else if (id === 'bio-wangsong') btnText.innerText = '展开个人简介与研究方向';
+                else btnText.innerText = '展开详细信息及招生说明';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                bio.classList.add('open');
+                btnText.innerText = '收起详细信息';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

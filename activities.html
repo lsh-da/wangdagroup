@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动专栏 - 王达课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+        .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
+        .nav-link:hover { color: #004299; }
+        .active-nav { color: #004299; border-bottom: 3px solid #004299; }
+
+        /* 照片缩略图样式 */
+        .photo-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 1 / 1;
+            background-color: #f1f5f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            cursor: zoom-in; /* 提示可以放大 */
+        }
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .photo-card:hover img { transform: scale(1.1); }
+
+        /* 时间轴装饰 */
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 18px;
+            height: 18px;
+            background-color: #1e3a8a;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        /* 灯箱/弹窗样式 */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- 导航栏 -->
+    <header class="border-b shadow-sm sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center py-4">
+                <div class="text-2xl font-bold text-blue-900 tracking-tighter">
+                    <span class="bg-blue-900 text-white px-2 py-1 rounded mr-2">W</span>DA GROUP
+                </div>
+            </div>
+            <nav class="flex">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="members.html" class="nav-link">成员介绍</a>
+                <a href="publications.html" class="nav-link">成果发表</a>
+                <a href="activities.html" class="nav-link active-nav">活动专栏</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 页面标题 -->
+    <section class="bg-blue-900 py-16 text-white text-center">
+        <h1 class="text-4xl font-bold mb-4">活动专栏</h1>
+    </section>
+
+    <!-- 灯箱弹窗 (默认隐藏) -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-5 right-5 text-white hover:text-gray-300">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="放大图" onclick="event.stopPropagation()">
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <div class="relative border-l-2 border-slate-200 ml-4 md:ml-6 pb-10">
+
+            <!-- 活动 1: 2026.02.07 -->
+            <div class="mb-20 relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2026.02.07</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">春季团建</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20260207_bannong/${i}.jpg')">
+                                    <img src="images/activities/20260207_bannong/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- 活动 2: 2025.06.05 -->
+            <div class="mb-20 relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2025.06.05</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">毕业照留念</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20250605_graduation/${i}.jpg')">
+                                    <img src="images/activities/20250605_graduation/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- 活动 3: 2024.12.28 -->
+            <div class="mb-20 relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2024.12.28</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">组内大合照</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20241228_group/${i}.jpg')">
+                                    <img src="images/activities/20241228_group/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- 活动 4: 2024.04.20 -->
+            <div class="mb-20 relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2024.04.20</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">酒家</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20240420_dinner/${i}.jpg')">
+                                    <img src="images/activities/20240420_dinner/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- 活动 5: 2024.04.18 -->
+            <div class="mb-20 relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2024.04.18</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">广州塔</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20240418_cantontower/${i}.jpg')">
+                                    <img src="images/activities/20240418_cantontower/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <!-- 活动 6: 2024.03.27 -->
+            <div class="relative pl-8">
+                <div class="timeline-dot"></div>
+                <div class="mb-6">
+                    <span class="bg-blue-100 text-blue-800 text-sm font-bold px-3 py-1 rounded-full">2024.03.27</span>
+                    <h2 class="text-2xl font-bold text-slate-900 mt-3">户外采风</h2>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <script>
+                        for(let i=1; i<=10; i++) {
+                            document.write(`
+                                <div class="photo-card" onclick="openLightbox('images/activities/20240327_naqu/${i}.jpg')">
+                                    <img src="images/activities/20240327_naqu/${i}.jpg" alt="活动照片" onerror="this.parentElement.style.display='none'">
+                                </div>
+                            `);
+                        }
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© Da Research Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 初始化图标
+        lucide.createIcons();
+
+        // 灯箱控制逻辑
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // 禁止背景滚动
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // 恢复滚动
+        }
+
+        // 按 ESC 键也可以关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>

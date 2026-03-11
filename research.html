@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究方向 - 王达课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+        .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
+        .nav-link:hover { color: #004299; }
+        .active-nav { color: #004299; border-bottom: 3px solid #004299; }
+
+        .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; }
+        .research-card:hover { border-left: 4px solid #1e3a8a; transform: translateX(10px); background: white; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
+
+        .bg-gradient-blue { background: linear-gradient(135deg, #1e3a8a 0%, #004299 100%); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- 导航栏 -->
+    <header class="border-b shadow-sm sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center py-4">
+                <div class="text-2xl font-bold text-blue-900 tracking-tighter">
+                    <span class="bg-blue-900 text-white px-2 py-1 rounded mr-2">W</span>WANG GROUP
+                </div>
+            </div>
+            <nav class="flex">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="research.html" class="nav-link active-nav">研究方向</a>
+                <a href="members.html" class="nav-link">成员介绍</a>
+                <a href="publications.html" class="nav-link">成果发表</a>
+                <a href="activities.html" class="nav-link">活动专栏</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 核心愿景介绍 -->
+    <section class="bg-gradient-blue py-20 text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold mb-8">研究领域与愿景</h1>
+            <p class="text-lg text-blue-100 leading-relaxed text-justify md:text-center">
+                本课题组立足于<strong>软物质</strong>及<strong>先进电子显微学</strong>两个研究领域，开展跨尺度结构设计、聚集态物性表征及宏观尺度功能材料构筑的前沿交叉研究。我们聚焦发展可控胶体合成和自组装策略，利用先进透射电镜技术在多尺度下表征、操控自组装的结构和性质，结合计算机模拟阐明自组装机理，探索其在光电材料中的应用。
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">跨尺度结构设计</span>
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">聚集态物性表征</span>
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">宏观功能材料构筑</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6 py-20">
+
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- 左侧核心研究方向列 -->
+            <div class="lg:col-span-2 space-y-8">
+                <h2 class="text-3xl font-bold text-slate-900 flex items-center mb-10">
+                    <i data-lucide="microscope" class="mr-3 text-blue-900"></i> 重点研究方向
+                </h2>
+
+                <!-- 方向 01 -->
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="flex items-start gap-6">
+                        <span class="text-4xl font-black text-blue-100">01</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900 mb-3">胶体的可控合成、组装及其机理研究</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4">
+                                发展精准的纳米晶体合成策略，探索跨尺度序构自组装。我们通过实验与计算机模拟相结合，深入阐明胶体粒子在分子级到微米级的相互作用机制，实现对结构生长的精准操控。
+                            </p>
+                            <div class="flex gap-2 text-xs font-semibold text-blue-700">
+                                <span class="bg-blue-50 px-2 py-1 rounded">纳米晶体精准合成</span>
+                                <span class="bg-blue-50 px-2 py-1 rounded">自组装动力学</span>
+                                <span class="bg-blue-50 px-2 py-1 rounded">计算机模拟</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 方向 02 -->
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="flex items-start gap-6">
+                        <span class="text-4xl font-black text-blue-100">02</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900 mb-3">先进多维透射电镜技术与重构算法开发</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4">
+                                致力于原位多模式高分辨电子断层扫描技术（Electron Tomography）的发展。特别针对电子束及环境敏感材料（如单原子催化剂、超分子自组装等），开发 4D STEM 高分辨成像方案及先进重构算法，实现三维尺度下的原子级观测。
+                            </p>
+                            <div class="flex gap-2 text-xs font-semibold text-emerald-700">
+                                <span class="bg-emerald-50 px-2 py-1 rounded">4D STEM</span>
+                                <span class="bg-emerald-50 px-2 py-1 rounded">电子断层扫描</span>
+                                <span class="bg-emerald-50 px-2 py-1 rounded">原位表征</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 方向 03 -->
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                    <div class="flex items-start gap-6">
+                        <span class="text-4xl font-black text-blue-100">03</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-900 mb-3">基于胶体自组装体系的新颖性质与功能探索</h3>
+                            <p class="text-slate-600 leading-relaxed mb-4">
+                                探索手性纳米晶体、光子晶体等新型功能材料。利用自组装产生的聚集态效应，开发高效的圆偏振光电器件、手性传感及其他新颖光电功能，将基础研究转化为宏观应用。
+                            </p>
+                            <div class="flex gap-2 text-xs font-semibold text-purple-700">
+                                <span class="bg-purple-50 px-2 py-1 rounded">手性光学</span>
+                                <span class="bg-purple-50 px-2 py-1 rounded">圆偏振器件</span>
+                                <span class="bg-purple-50 px-2 py-1 rounded">光电材料</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧合作与环境 -->
+            <div class="space-y-12">
+                <!-- 学术环境 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h4 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">学术环境</h4>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span><strong>自由开放：</strong> 鼓励研究人员自主开拓研究方向，提供宽松的学术氛围。</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i>
+                            <span><strong>保障充足：</strong> 研究经费充足，拥有世界一流的电镜表征平台。</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 国际合作 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h4 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">国际合作网络</h4>
+                    <p class="text-xs text-slate-500 mb-6 leading-relaxed">本课题组与全球多个顶尖院士团队保持紧密合作，成员有机会赴海外交流访问：</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w20/nl.png" class="w-5 h-3 shadow-sm">
+                            <span class="text-xs font-medium">荷兰乌特勒支大学 (Utrecht Univ.)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w20/be.png" class="w-5 h-3 shadow-sm">
+                            <span class="text-xs font-medium">比利时安特卫普电镜中心 (EMAT)</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w20/es.png" class="w-5 h-3 shadow-sm">
+                            <span class="text-xs font-medium">西班牙 biomaGUNE 研究中心</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <img src="https://flagcdn.com/w20/us.png" class="w-5 h-3 shadow-sm">
+                            <span class="text-xs font-medium">美国宾夕法尼亚大学 (UPenn)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 发表成果摘要 -->
+                <div class="bg-blue-900 p-8 rounded-2xl text-white">
+                    <h4 class="text-lg font-bold mb-4">顶级发表</h4>
+                    <p class="text-xs text-blue-200 mb-4">研究成果见于以下学术期刊：</p>
+                    <div class="grid grid-cols-2 gap-2 text-[10px] font-bold uppercase tracking-wider">
+                        <div class="bg-white/10 px-2 py-1 rounded">Nature Physics</div>
+                        <div class="bg-white/10 px-2 py-1 rounded">Nature Synthesis</div>
+                        <div class="bg-white/10 px-2 py-1 rounded">Nature Comm.</div>
+                        <div class="bg-white/10 px-2 py-1 rounded">ACS Nano</div>
+                        <div class="bg-white/10 px-2 py-1 rounded col-span-2 text-center">Accounts of Chemical Research</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© Wang Research Group. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
