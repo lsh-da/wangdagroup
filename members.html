@@ -12,50 +12,21 @@
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
 
-        /* 成员卡片悬停效果 */
+        /* 核心视觉：深蓝色渐变横幅 */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
         .member-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .member-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .member-photo { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
-        /* 核心修改：使用 cover 填满，使用 top 确保头顶不被裁 */
-        .member-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;      /* 强制填满，不留灰色背景 */
-            object-position: top;   /* 关键：从头顶开始对齐，裁切只发生在底部 */
-            display: block;
-        }
+        .bio-details { max-height: 0; overflow: hidden; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0; }
+        .bio-details.open { max-height: 2000px; opacity: 1; padding-top: 1.5rem; padding-bottom: 2rem; }
 
-        .photo-wrapper {
-            aspect-ratio: 3 / 4;    /* 统一比例 */
-            width: 100%;
-            overflow: hidden;
-            background: #fff;       /* 万一加载失败显示白色 */
-        }
-
-        /* 折叠详情动画 */
-        .bio-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0;
-        }
-        .bio-details.open {
-            max-height: 2000px;
-            opacity: 1;
-            padding-top: 1.5rem;
-            padding-bottom: 2rem;
-        }
-
-        .section-title-sm {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 4px;
-        }
+        .section-title-sm { display: flex; align-items: center; font-weight: 700; color: #1e3a8a; margin-top: 1rem; margin-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
         .journal-tag { background: #eff6ff; color: #1e40af; padding: 2px 8px; border-radius: 4px; font-style: italic; font-size: 0.75rem; border: 1px solid #dbeafe; }
     </style>
 </head>
@@ -82,12 +53,13 @@
         </div>
     </header>
 
-    <!-- 页面标题区 -->
-    <section class="bg-blue-900 py-16 text-white text-center">
-        <h1 class="text-4xl font-bold mb-4">团队成员</h1>
-        <p class="text-blue-200">一支充满活力、跨学科、追求卓越的研究团队</p>
+    <!-- 蓝色背景横幅 (已对齐) -->
+    <section class="hero-gradient h-[250px] flex items-center justify-center text-white">
+        <div class="text-center px-6">
+            <h1 class="text-4xl font-bold mb-2">团队成员</h1>
+            <p class="text-blue-200">Our Team Members</p>
+        </div>
     </section>
-
     <main class="max-w-7xl mx-auto px-6 py-16 space-y-20">
 
        <!-- 1. PI 介绍 -->
