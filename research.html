@@ -11,11 +11,10 @@
         .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
-
         .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; }
         .research-card:hover { border-left: 4px solid #1e3a8a; transform: translateX(10px); background: white; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
-
-        .bg-gradient-blue { background: linear-gradient(135deg, #1e3a8a 0%, #004299 100%); }
+        /* 核心背景样式：与首页完全一致 */
+        .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -41,11 +40,11 @@
         </div>
     </header>
 
-    <!-- 核心愿景介绍 -->
-    <section class="bg-gradient-blue py-20 text-white">
+    <!-- 巨幕横幅 -->
+    <section class="hero-gradient py-24 flex items-center justify-center text-white">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl font-bold mb-8">研究领域与愿景</h1>
-            <p class="text-lg text-blue-100 leading-relaxed text-justify md:text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8">研究领域与愿景</h1>
+            <p class="text-lg text-blue-100 leading-relaxed text-justify md:text-center max-w-3xl mx-auto">
                 本课题组立足于<strong>软物质</strong>及<strong>先进电子显微学</strong>两个研究领域，开展跨尺度结构设计、聚集态物性表征及宏观尺度功能材料构筑的前沿交叉研究。我们聚焦发展可控胶体合成和自组装策略，利用先进透射电镜技术在多尺度下表征、操控自组装的结构和性质，结合计算机模拟阐明自组装机理，探索其在光电材料中的应用。
             </p>
             <div class="mt-10 flex flex-wrap justify-center gap-4">
@@ -57,7 +56,6 @@
     </section>
 
     <main class="max-w-7xl mx-auto px-6 py-20">
-
         <div class="grid lg:grid-cols-3 gap-12">
             <!-- 左侧核心研究方向列 -->
             <div class="lg:col-span-2 space-y-8">

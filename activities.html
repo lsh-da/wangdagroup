@@ -12,6 +12,15 @@
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
 
+        /* 统一的巨幕背景样式 */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
         /* 照片缩略图样式 */
         .photo-card {
             position: relative;
@@ -89,9 +98,12 @@
         </div>
     </header>
 
-    <!-- 页面标题 -->
-    <section class="bg-blue-900 py-16 text-white text-center">
-        <h1 class="text-4xl font-bold mb-4">活动专栏</h1>
+     <!-- 修改后的统一巨幕横幅 -->
+    <section class="hero-gradient h-[300px] flex items-center justify-center text-white">
+        <div class="text-center px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">活动专栏</h1>
+            <p class="text-blue-200">Activities</p>
+        </div>
     </section>
 
     <!-- 灯箱弹窗 (默认隐藏) -->
