@@ -12,6 +12,19 @@
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
         .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
+
+        /* 轮播图核心样式 */
+        .carousel-wrapper { position: relative; width: 100%; height: 450px; overflow: hidden; }
+        .carousel-item {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out; /* 平滑过渡效果 */
+            z-index: 1;
+        }
+        .carousel-item.active { opacity: 1; z-index: 2; }
+        .dot { transition: background-color 0.3s; }
     </style>
 </head>
 <body class="bg-white text-slate-800">
@@ -45,6 +58,15 @@
                 软物质与先进结构表征课题组
             </p>
         </div>
+    </section>
+
+    <!-- 轮播图区域 (插入在蓝色背景下方) -->
+    <section class="max-w-7xl mx-auto mt-12 px-6">
+        <div id="carousel" class="carousel-wrapper rounded-2xl shadow-xl bg-slate-200">
+            <!-- JS 循环生成图片容器 -->
+        </div>
+        <!-- 底部圆点导航 -->
+        <div id="dots" class="flex justify-center mt-4 gap-2"></div>
     </section>
 
     <!-- 主体内容 -->
@@ -139,7 +161,51 @@
 
     <script>
         lucide.createIcons();
+
+    // 轮播逻辑
+        const carousel = document.getElementById('carousel');
+        const dotsContainer = document.getElementById('dots');
+        const imageCount = 5;
+
+        // 初始化
+        for (let i = 1; i <= imageCount; i++) {
+            // 创建滑块
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide';
+            // 路径设置：images/results/1.jpg
+            slide.style.backgroundImage = `url('images/results/${i}.jpg')`;
+            carousel.appendChild(slide);
+
+            // 创建圆点
+            const dot = document.createElement('button');
+            dot.className = 'dot w-3 h-3 rounded-full bg-slate-300 hover:bg-blue-900';
+            dot.onclick = () => showSlide(i - 1);
+            dotsContainer.appendChild(dot);
+        }
+
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('bg-blue-900');
+            dots[currentIndex].classList.add('bg-slate-300');
+
+            currentIndex = index;
+
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.remove('bg-slate-300');
+            dots[currentIndex].classList.add('bg-blue-900');
+        }
+
+        // 初始显示
+        showSlide(0);
+
+        // 自动轮播
+        setInterval(() => {
+            showSlide((currentIndex + 1) % imageCount);
+        }, 5000);
     </script>
 </body>
-
 </html>
