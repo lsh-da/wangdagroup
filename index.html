@@ -14,14 +14,15 @@
         .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
 
         /* 轮播图核心样式 */
-        .carousel-wrapper { position: relative; width: 100%; height: 450px; overflow: hidden; }
+        .carousel-wrapper { position: relative; width: 100%; height: 450px; overflow: hidden; background-color: white; }
         .carousel-item {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
             opacity: 0;
-            transition: opacity 1.2s ease-in-out; /* 平滑过渡效果 */
+            transition: opacity 1.2s ease-in-out;
             z-index: 1;
+            background-repeat: no-repeat;
         }
         .carousel-item.active { opacity: 1; z-index: 2; }
         .dot { transition: background-color 0.3s; }
@@ -60,9 +61,10 @@
         </div>
     </section>
 
-    <!-- 轮播图区域 (插入在蓝色背景下方) -->
+    <!-- 轮播图区域 -->
     <section class="max-w-7xl mx-auto mt-12 px-6">
-        <div id="carousel" class="carousel-wrapper rounded-2xl shadow-xl bg-slate-200">
+        <!-- 移除了 shadow-xl 和背景色，使其与页面背景完全融合 -->
+        <div id="carousel" class="carousel-wrapper">
             <!-- JS 循环生成图片容器 -->
         </div>
         <!-- 底部圆点导航 -->
@@ -72,18 +74,13 @@
     <!-- 主体内容 -->
     <main class="max-w-7xl mx-auto px-6 py-16">
         <div class="grid lg:grid-cols-3 gap-12">
-
-            <!-- 左侧：课题组简介 (占2栏) -->
+            <!-- 左侧：课题组简介 -->
             <div class="lg:col-span-2 space-y-8">
                 <section>
                     <h2 class="text-3xl font-bold mb-6 border-l-8 border-blue-900 pl-4 text-slate-900">课题组简介</h2>
                     <div class="text-lg leading-loose text-slate-700 space-y-6">
-                        <p>
-                            本课题组立足于<strong>软物质</strong>及<strong>先进透射电镜</strong>两个研究领域，围绕序构功能材料的设计、跨尺度结构和性能表征开展前沿交叉研究。
-                        </p>
-                        <p>
-                            目前，课题组聚焦但不局限于纳米晶体的可控合成和自组装，发展并利用先进透射电镜技术在多尺度下表征、操控胶体纳米晶体及其自组装的结构和性质，并结合计算机模拟阐明机理，探索纳米晶体及其自组装在（光电）领域中的应用。
-                        </p>
+                        <p>本课题组立足于<strong>软物质</strong>及<strong>先进透射电镜</strong>两个研究领域，围绕序构功能材料的设计、跨尺度结构和性能表征开展前沿交叉研究。</p>
+                        <p>目前，课题组聚焦但不局限于纳米晶体的可控合成和自组装，发展并利用先进透射电镜技术在多尺度下表征、操控胶体纳米晶体及其自组装的结构和性质，并结合计算机模拟阐明机理，探索纳米晶体及其自组装在（光电）领域中的应用。</p>
                     </div>
                 </section>
 
@@ -112,13 +109,10 @@
                 </section>
 
                 <section class="text-slate-700 leading-relaxed">
-                    <p>
-                        课题组鼓励研究人员自主开拓新的研究方向，支持课题组成员将以往的研究经验与目前组内的研究方向充分结合。我们提供<strong>宽松的学术环境</strong>和<strong>充足的研究经费</strong>，支持成员出国访问交流。目前课题组实验设备条件齐全，成员结构合理，现有成员 18 人。
-                    </p>
+                    <p>课题组鼓励研究人员自主开拓新的研究方向，支持课题组成员将以往的研究经验与目前组内的研究方向充分结合。我们提供<strong>宽松的学术环境</strong>和<strong>充足的研究经费</strong>，支持成员出国访问交流。目前课题组实验设备条件齐全，成员结构合理，现有成员 18 人。</p>
                 </section>
             </div>
-
-            <!-- 右侧：招生与联系 (占1栏) -->
+            <!-- 右侧：招生与联系 -->
             <div class="space-y-8">
                 <div class="bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
                     <h3 class="text-xl font-bold mb-4 text-blue-900 flex items-center">
@@ -136,7 +130,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="bg-slate-900 text-white p-8 rounded-2xl">
                     <h3 class="text-xl font-bold mb-6 flex items-center">
                         <i data-lucide="mail" class="mr-2"></i> 联系我们
@@ -149,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 
@@ -162,18 +154,21 @@
     <script>
         lucide.createIcons();
 
-    // 轮播逻辑
+        // 轮播逻辑
         const carousel = document.getElementById('carousel');
         const dotsContainer = document.getElementById('dots');
         const imageCount = 5;
 
         // 初始化
         for (let i = 1; i <= imageCount; i++) {
-            // 创建滑块
             const slide = document.createElement('div');
-            slide.className = 'carousel-slide';
-            // 路径设置：images/results/1.jpg
+            slide.className = 'carousel-item';
+
+            // 设置背景图及样式
             slide.style.backgroundImage = `url('images/results/${i}.jpg')`;
+            slide.style.backgroundSize = 'contain';
+            slide.style.backgroundPosition = 'center';
+
             carousel.appendChild(slide);
 
             // 创建圆点
@@ -183,11 +178,13 @@
             dotsContainer.appendChild(dot);
         }
 
-        const slides = document.querySelectorAll('.carousel-slide');
+        const slides = document.querySelectorAll('.carousel-item');
         const dots = document.querySelectorAll('.dot');
         let currentIndex = 0;
 
         function showSlide(index) {
+            if (!slides[currentIndex]) return;
+
             slides[currentIndex].classList.remove('active');
             dots[currentIndex].classList.remove('bg-blue-900');
             dots[currentIndex].classList.add('bg-slate-300');
@@ -200,12 +197,12 @@
         }
 
         // 初始显示
-        showSlide(0);
-
-        // 自动轮播
-        setInterval(() => {
-            showSlide((currentIndex + 1) % imageCount);
-        }, 5000);
+        if (slides.length > 0) {
+            showSlide(0);
+            setInterval(() => {
+                showSlide((currentIndex + 1) % imageCount);
+            }, 5000);
+        }
     </script>
 </body>
 </html>

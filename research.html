@@ -11,10 +11,13 @@
         .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
-        .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; }
+        .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; cursor: pointer; }
         .research-card:hover { border-left: 4px solid #1e3a8a; transform: translateX(10px); background: white; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
-        /* 核心背景样式：与首页完全一致 */
         .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
+
+        /* 详情折叠样式 */
+        .details { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #475569; line-height: 1.8; }
+        .research-card.active .details { display: block; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -57,85 +60,69 @@
 
     <main class="max-w-7xl mx-auto px-6 py-20">
         <div class="grid lg:grid-cols-3 gap-12">
-            <!-- 左侧核心研究方向列 -->
             <div class="lg:col-span-2 space-y-8">
                 <h2 class="text-3xl font-bold text-slate-900 flex items-center mb-10">
-                    <i data-lucide="microscope" class="mr-3 text-blue-900"></i> 重点研究方向
+                    <i data-lucide="microscope" class="mr-3 text-blue-900"></i> 重点研究方向 
                 </h2>
 
                 <!-- 方向 01 -->
-                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200" onclick="this.classList.toggle('active')">
                     <div class="flex items-start gap-6">
                         <span class="text-4xl font-black text-blue-100">01</span>
                         <div>
                             <h3 class="text-xl font-bold text-blue-900 mb-3">胶体的可控合成、组装及其机理研究</h3>
-                            <p class="text-slate-600 leading-relaxed mb-4">
-                                发展精准的纳米晶体合成策略，探索跨尺度序构自组装。我们通过实验与计算机模拟相结合，深入阐明胶体粒子在分子级到微米级的相互作用机制，实现对结构生长的精准操控。
-                            </p>
-                            <div class="flex gap-2 text-xs font-semibold text-blue-700">
-                                <span class="bg-blue-50 px-2 py-1 rounded">纳米晶体精准合成</span>
-                                <span class="bg-blue-50 px-2 py-1 rounded">自组装动力学</span>
-                                <span class="bg-blue-50 px-2 py-1 rounded">计算机模拟</span>
-                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4">发展精准的纳米晶体合成策略，探索跨尺度序构自组装。我们通过实验与计算机模拟相结合，深入阐明胶体粒子在分子级到微米级的相互作用机制，实现对结构生长的精准操控。</p>
+                            <div class="flex gap-2 text-xs font-semibold text-blue-700"><span class="bg-blue-50 px-2 py-1 rounded">纳米晶体精准合成</span><span class="bg-blue-50 px-2 py-1 rounded">自组装动力学</span><span class="bg-blue-50 px-2 py-1 rounded">计算机模拟</span></div>
                         </div>
+                    </div>
+                    <div class="details">
+                        <p><strong>详细研究内容：</strong>本方向重点研究胶体粒子在多组分体系中的热力学平衡态与动力学路径。我们利用现代微流控技术与合成化学手段，调控粒子表面的电荷分布与配体密度，从而实现具有特定取向的各向异性生长。此外，通过开发基于机器学习的势函数模拟，我们能够从分子尺度精确预测自组装结构的演化趋势，为制备具有复杂对称性的胶体超晶格提供关键理论支持。</p>
                     </div>
                 </div>
 
                 <!-- 方向 02 -->
-                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200" onclick="this.classList.toggle('active')">
                     <div class="flex items-start gap-6">
                         <span class="text-4xl font-black text-blue-100">02</span>
                         <div>
                             <h3 class="text-xl font-bold text-blue-900 mb-3">先进多维透射电镜技术与重构算法开发</h3>
-                            <p class="text-slate-600 leading-relaxed mb-4">
-                                致力于原位多模式高分辨电子断层扫描技术（Electron Tomography）的发展。特别针对电子束及环境敏感材料（如单原子催化剂、超分子自组装等），开发 4D STEM 高分辨成像方案及先进重构算法，实现三维尺度下的原子级观测。
-                            </p>
-                            <div class="flex gap-2 text-xs font-semibold text-emerald-700">
-                                <span class="bg-emerald-50 px-2 py-1 rounded">4D STEM</span>
-                                <span class="bg-emerald-50 px-2 py-1 rounded">电子断层扫描</span>
-                                <span class="bg-emerald-50 px-2 py-1 rounded">原位表征</span>
-                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4">致力于原位多模式高分辨电子断层扫描技术（Electron Tomography）的发展。特别针对电子束及环境敏感材料，开发 4D STEM 高分辨成像方案及先进重构算法，实现三维尺度下的原子级观测。</p>
+                            <div class="flex gap-2 text-xs font-semibold text-emerald-700"><span class="bg-emerald-50 px-2 py-1 rounded">4D STEM</span><span class="bg-emerald-50 px-2 py-1 rounded">电子断层扫描</span><span class="bg-emerald-50 px-2 py-1 rounded">原位表征</span></div>
                         </div>
+                    </div>
+                    <div class="details">
+                        <p><strong>详细研究内容：</strong>本方向旨在克服电镜成像在低剂量条件下的信噪比局限。我们利用高灵敏度直接电子探测器，结合叠层衍射（Ptychography）技术，实现了对轻元素材料的超高分辨表征。同时，我们自主开发了针对原位反应过程的快速断层扫描重构算法，通过实时数据处理，捕捉催化剂在工作状态下的形态演变过程，揭示结构与活性的深层构效关系。</p>
                     </div>
                 </div>
 
                 <!-- 方向 03 -->
-                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200" onclick="this.classList.toggle('active')">
                     <div class="flex items-start gap-6">
                         <span class="text-4xl font-black text-blue-100">03</span>
                         <div>
                             <h3 class="text-xl font-bold text-blue-900 mb-3">基于胶体自组装体系的新颖性质与功能探索</h3>
-                            <p class="text-slate-600 leading-relaxed mb-4">
-                                探索手性纳米晶体、光子晶体等新型功能材料。利用自组装产生的聚集态效应，开发高效的圆偏振光电器件、手性传感及其他新颖光电功能，将基础研究转化为宏观应用。
-                            </p>
-                            <div class="flex gap-2 text-xs font-semibold text-purple-700">
-                                <span class="bg-purple-50 px-2 py-1 rounded">手性光学</span>
-                                <span class="bg-purple-50 px-2 py-1 rounded">圆偏振器件</span>
-                                <span class="bg-purple-50 px-2 py-1 rounded">光电材料</span>
-                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-4">探索手性纳米晶体、光子晶体等新型功能材料。利用自组装产生的聚集态效应，开发高效的圆偏振光电器件、手性传感及其他新颖光电功能，将基础研究转化为宏观应用。</p>
+                            <div class="flex gap-2 text-xs font-semibold text-purple-700"><span class="bg-purple-50 px-2 py-1 rounded">手性光学</span><span class="bg-purple-50 px-2 py-1 rounded">圆偏振器件</span><span class="bg-purple-50 px-2 py-1 rounded">光电材料</span></div>
                         </div>
+                    </div>
+                    <div class="details">
+                        <p><strong>详细研究内容：</strong>本方向聚焦于光与物质相互作用的极限调控。通过构建各向异性的手性纳米超结构，我们在可见光波段实现了极高的圆二色性（CD）响应。我们进一步将这些材料与柔性基底集成，构筑可拉伸的圆偏振光探测器与发光二极管，不仅在基础光学物理研究中取得了进展，同时也为未来下一代可穿戴光电器件的产业化应用奠定了坚实的科学基础。</p>
                     </div>
                 </div>
             </div>
 
-            <!-- 右侧合作与环境 -->
+            <!-- 右侧边栏 -->
             <div class="space-y-12">
                 <!-- 学术环境 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h4 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">学术环境</h4>
                     <ul class="space-y-4 text-sm text-slate-600">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i>
-                            <span><strong>自由开放：</strong> 鼓励研究人员自主开拓研究方向，提供宽松的学术氛围。</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i>
-                            <span><strong>保障充足：</strong> 研究经费充足，拥有世界一流的电镜表征平台。</span>
-                        </li>
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i> <span><strong>自由开放：</strong> 鼓励研究人员自主开拓研究方向，提供宽松的学术氛围。</span></li>
+                        <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-green-600 shrink-0"></i> <span><strong>保障充足：</strong> 研究经费充足，拥有世界一流的电镜表征平台。</span></li>
                     </ul>
                 </div>
 
-                <!-- 国际合作 -->
+                <!-- 国际合作网络 -->
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
                     <h4 class="text-lg font-bold text-slate-900 mb-4 border-b pb-2">国际合作网络</h4>
                     <p class="text-xs text-slate-500 mb-6 leading-relaxed">本课题组与全球多个顶尖院士团队保持紧密合作，成员有机会赴海外交流访问：</p>
@@ -159,15 +146,12 @@
                     </div>
                 </div>
 
-                <!-- 发表成果摘要 -->
+                <!-- 顶级发表 -->
                 <div class="bg-blue-900 p-8 rounded-2xl text-white">
                     <h4 class="text-lg font-bold mb-4">顶级发表</h4>
-                    <p class="text-xs text-blue-200 mb-4">研究成果见于以下学术期刊：</p>
                     <div class="grid grid-cols-2 gap-2 text-[10px] font-bold uppercase tracking-wider">
                         <div class="bg-white/10 px-2 py-1 rounded">Nature Physics</div>
                         <div class="bg-white/10 px-2 py-1 rounded">Nature Synthesis</div>
-                        <div class="bg-white/10 px-2 py-1 rounded">Nature Comm.</div>
-                        <div class="bg-white/10 px-2 py-1 rounded">ACS Nano</div>
                         <div class="bg-white/10 px-2 py-1 rounded col-span-2 text-center">Accounts of Chemical Research</div>
                     </div>
                 </div>
