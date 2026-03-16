@@ -11,8 +11,15 @@
         .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
-        /* 继承首页的横幅样式 */
-        .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
+
+        /* 统一的巨幕背景样式 */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
         .pub-item { border-bottom: 1px solid #eee; padding: 15px 0; color: #334155; }
     </style>
 </head>
@@ -23,7 +30,7 @@
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center py-4">
                 <div class="text-2xl font-bold text-blue-900 tracking-tighter">
-                    <span class="bg-blue-900 text-white px-2 py-1 rounded mr-2">W</span>DA GROUP
+                    DA GROUP
                 </div>
                 <div class="ml-4 pl-4 border-l text-sm text-slate-500 hidden lg:block">
                     华南师范大学 · 华南先进光电子研究院
@@ -39,10 +46,10 @@
         </div>
     </header>
 
-    <!-- 蓝色背景横幅 -->
-    <section class="hero-gradient h-[250px] flex items-center justify-center text-white">
+    <!-- 统一风格巨幕 -->
+    <section class="hero-gradient h-[300px] flex items-center justify-center text-white">
         <div class="text-center px-6">
-            <h1 class="text-4xl font-bold mb-2">成果发表</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">成果发表</h1>
             <p class="text-blue-200">Selected Publications</p>
         </div>
     </section>
@@ -76,12 +83,17 @@
         </div>
 
         <h3 class="text-xl font-bold mb-6 text-blue-900 border-l-8 border-blue-900 pl-4">陈子韬 特聘研究员 成果</h3>
-        <div class="space-y-2 text-sm">
+        <div class="space-y-2 text-sm mb-16">
             <div class="pub-item">[1] Z. T. Chen et al. Nano Letters, 2024, 24, 4:1392.</div>
             <div class="pub-item">[2] Z. T. Chen et al. Applied Physics Letter, 2016, 109: 191907.</div>
             <div class="pub-item">[3] Z. T. Chen et al. Journal of Applied Physics, 2017, 122: 213102.</div>
             <div class="pub-item">[4] M. Zhao#, Z. T. Chen# et al. JACS, 2021, 143: 6293.</div>
             <div class="pub-item">[5] Y. X. Li# et al. Advanced Materials, 2022, 34, 44: 2206002.</div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-6 text-blue-900 border-l-8 border-blue-900 pl-4">谢晓滨 研究员 成果</h3>
+        <div class="space-y-2 text-sm">
+            <div class="pub-item italic text-slate-400">内容整理中...</div>
         </div>
     </main>
 
