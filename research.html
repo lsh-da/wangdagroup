@@ -11,9 +11,18 @@
         .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
+
         .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; cursor: pointer; }
         .research-card:hover { border-left: 4px solid #1e3a8a; transform: translateX(10px); background: white; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
-        .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
+
+        /* 统一的巨幕背景样式 */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
         /* 详情折叠样式 */
         .details { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #475569; line-height: 1.8; }
@@ -43,18 +52,11 @@
         </div>
     </header>
 
-    <!-- 巨幕横幅 -->
-    <section class="hero-gradient py-24 flex items-center justify-center text-white">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-8">研究领域与愿景</h1>
-            <p class="text-lg text-blue-100 leading-relaxed text-justify md:text-center max-w-3xl mx-auto">
-                本课题组立足于<strong>软物质</strong>及<strong>先进电子显微学</strong>两个研究领域，开展跨尺度结构设计、聚集态物性表征及宏观尺度功能材料构筑的前沿交叉研究。我们聚焦发展可控胶体合成和自组装策略，利用先进透射电镜技术在多尺度下表征、操控自组装的结构和性质，结合计算机模拟阐明自组装机理，探索其在光电材料中的应用。
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-4">
-                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">跨尺度结构设计</span>
-                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">聚集态物性表征</span>
-                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">宏观功能材料构筑</span>
-            </div>
+    <!-- 统一风格巨幕 -->
+    <section class="hero-gradient h-[300px] flex items-center justify-center text-white">
+        <div class="text-center px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">研究领域与愿景</h1>
+            <p class="text-blue-200">Research Interests & Vision</p>
         </div>
     </section>
 
@@ -76,11 +78,16 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><strong>详细研究内容：</strong>本方向重点研究胶体粒子在多组分体系中的热力学平衡态与动力学路径。我们利用现代微流控技术与合成化学手段，调控粒子表面的电荷分布与配体密度，从而实现具有特定取向的各向异性生长。此外，通过开发基于机器学习的势函数模拟，我们能够从分子尺度精确预测自组装结构的演化趋势，为制备具有复杂对称性的胶体超晶格提供关键理论支持。</p>
+                        <p class="mb-4"><strong>详细研究内容：</strong>本方向重点研究胶体粒子在多组分体系中的热力学平衡态与动力学路径，致力于实现从“无序”到“有序”的精准可控：</p>
+                        <ul class="list-disc pl-5 space-y-2 text-sm">
+                            <li><strong>配体工程与表面化学：</strong>通过精确调控胶体粒子表面的配体密度、空间位阻及电荷分布，实现对粒子间相互作用势的定制化设计，为复杂超晶格的构筑提供“化学密码”。</li>
+                            <li><strong>自组装动力学路径调控：</strong>研究溶剂蒸发、扩散控制及外场诱导下的自组装过程，揭示亚稳态结构向平衡态转化的动力学机制，从而突破传统热力学限制，制备出自然界罕见的对称性结构。</li>
+                            <li><strong>多尺度计算模拟：</strong>结合分子动力学（MD）与粗粒化模型，开发基于机器学习的势函数，从分子尺度精确预测自组装结构的演化趋势，实现“实验-模拟”的闭环反馈。</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- 方向 02 -->
+                <!-- 方向 02 (已扩充) -->
                 <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200" onclick="this.classList.toggle('active')">
                     <div class="flex items-start gap-6">
                         <span class="text-4xl font-black text-blue-100">02</span>
@@ -91,7 +98,12 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><strong>详细研究内容：</strong>本方向旨在克服电镜成像在低剂量条件下的信噪比局限。我们利用高灵敏度直接电子探测器，结合叠层衍射（Ptychography）技术，实现了对轻元素材料的超高分辨表征。同时，我们自主开发了针对原位反应过程的快速断层扫描重构算法，通过实时数据处理，捕捉催化剂在工作状态下的形态演变过程，揭示结构与活性的深层构效关系。</p>
+                        <p class="mb-4"><strong>详细研究内容：</strong>本方向旨在突破传统电镜成像在低剂量与高时空分辨率之间的矛盾，通过技术创新揭示材料在原子尺度的动态演变：</p>
+                        <ul class="list-disc pl-5 space-y-2 text-sm">
+                            <li><strong>低剂量成像与叠层衍射：</strong>利用高灵敏度直接电子探测器，结合叠层衍射（Ptychography）技术，在极低电子剂量下实现对轻元素材料及环境敏感样品的超高分辨表征，最大程度减少束流损伤。</li>
+                            <li><strong>原位反应动力学监测：</strong>自主开发针对原位液体池与气体池反应的快速断层扫描技术，通过实时数据处理捕捉催化剂在工作状态下的形态演变，揭示结构与活性的深层构效关系。</li>
+                            <li><strong>数据驱动的结构重构：</strong>引入深度学习与压缩感知算法，针对稀疏采样数据进行高保真三维重构，解决复杂纳米体系在断层扫描中的“缺失锥”问题，实现原子级三维空间结构的精准解析。</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -106,7 +118,12 @@
                         </div>
                     </div>
                     <div class="details">
-                        <p><strong>详细研究内容：</strong>本方向聚焦于光与物质相互作用的极限调控。通过构建各向异性的手性纳米超结构，我们在可见光波段实现了极高的圆二色性（CD）响应。我们进一步将这些材料与柔性基底集成，构筑可拉伸的圆偏振光探测器与发光二极管，不仅在基础光学物理研究中取得了进展，同时也为未来下一代可穿戴光电器件的产业化应用奠定了坚实的科学基础。</p>
+                        <p class="mb-4"><strong>详细研究内容：</strong>本方向聚焦于光与物质相互作用的极限调控，致力于将胶体自组装的微观结构转化为宏观功能涌现：</p>
+                        <ul class="list-disc pl-5 space-y-2 text-sm">
+                            <li><strong>手性光学超结构：</strong>通过构建各向异性的手性纳米超结构，我们在可见光波段实现了极高的圆二色性（CD）响应，揭示了手性传递从分子水平到超晶格尺度的物理机制。</li>
+                            <li><strong>光电集成与器件：</strong>我们将这些功能材料与柔性基底集成，构筑可拉伸的圆偏振光探测器与发光二极管（LED），实现了对偏振信息的实时感知与高效转换。</li>
+                            <li><strong>生物传感与智能界面：</strong>利用胶体自组装形成的特殊表面形貌，开发高灵敏度的手性分子传感界面，为生物标志物的早期检测提供新型的光学信号放大平台。</li>
+                        </ul>
                     </div>
                 </div>
             </div>
