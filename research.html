@@ -11,18 +11,9 @@
         .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
         .nav-link:hover { color: #004299; }
         .active-nav { color: #004299; border-bottom: 3px solid #004299; }
-
         .research-card { transition: all 0.3s ease; border-left: 4px solid transparent; cursor: pointer; }
         .research-card:hover { border-left: 4px solid #1e3a8a; transform: translateX(10px); background: white; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1); }
-
-        /* 统一的巨幕背景样式 */
-        .hero-gradient {
-            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)),
-                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+        .hero-gradient { background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80'); background-size: cover; background-position: center; }
 
         /* 详情折叠样式 */
         .details { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0; color: #475569; line-height: 1.8; }
@@ -52,11 +43,18 @@
         </div>
     </header>
 
-    <!-- 统一风格巨幕 -->
-    <section class="hero-gradient h-[300px] flex items-center justify-center text-white">
-        <div class="text-center px-6">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">研究领域与愿景</h1>
-            <p class="text-blue-200">Research Interests & Vision</p>
+    <!-- 巨幕横幅 -->
+    <section class="hero-gradient py-24 flex items-center justify-center text-white">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-8">研究领域与愿景</h1>
+            <p class="text-lg text-blue-100 leading-relaxed text-justify md:text-center max-w-3xl mx-auto">
+                本课题组立足于<strong>软物质</strong>及<strong>先进电子显微学</strong>两个研究领域，开展跨尺度结构设计、聚集态物性表征及宏观尺度功能材料构筑的前沿交叉研究。我们致力于构建“合成-表征-模拟”三位一体的闭环研究范式，通过对胶体纳米体系的精准操控，揭示物质在跨尺度下的演化规律，从而突破传统材料设计的瓶颈，为未来智能光电材料与器件的开发提供源头创新动力。
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">跨尺度结构设计</span>
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">聚集态物性表征</span>
+                <span class="px-4 py-2 bg-white/10 rounded-full border border-white/20 text-sm">宏观功能材料构筑</span>
+            </div>
         </div>
     </section>
 
@@ -87,7 +85,7 @@
                     </div>
                 </div>
 
-                <!-- 方向 02 (已扩充) -->
+                <!-- 方向 02 -->
                 <div class="research-card p-8 rounded-xl bg-slate-50 border border-slate-200" onclick="this.classList.toggle('active')">
                     <div class="flex items-start gap-6">
                         <span class="text-4xl font-black text-blue-100">02</span>
