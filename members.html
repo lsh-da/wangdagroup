@@ -225,13 +225,36 @@
                 </div>
 
                 <!-- 谢晓滨老师 -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row gap-8">
-                    <div class="w-full md:w-48 h-60 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
-                        <img src="images/members/xiexiaobin.jpg" class="member-photo" onclick="openLightbox(this.src)" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden px-8 pt-8">
+                    <div class="flex flex-col md:flex-row gap-8 pb-8">
+                        <div class="w-full md:w-48 h-60 bg-slate-100 rounded-xl overflow-hidden flex-shrink-0">
+                            <img src="images/members/xiexiaobin.jpg" class="member-photo" onclick="openLightbox(this.src)" onerror="this.src='https://pfst.cf2.poecdn.net/file/p-O87Y3XyP9Z5.png?type=fallback'">
+                        </div>
+                        <div class="flex-1 space-y-3">
+                            <h3 class="text-2xl font-bold text-slate-900">谢晓滨 <span class="text-lg font-normal text-slate-500 ml-2">研究员</span></h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">致力于纳米材料与先进电子显微学研究，在跨尺度结构表征与材料物性调控方面具有丰富经验。</p>
+                            <button onclick="toggleBio('bio-xiexiaobin')" class="mt-2 flex items-center text-blue-700 text-sm font-bold">
+                                <span id="btn-text-bio-xiexiaobin">展开详细履历</span>
+                                <i data-lucide="chevron-down" id="icon-bio-xiexiaobin" class="ml-1 w-4 h-4 transition-transform"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900">谢晓滨 <span class="text-lg font-normal text-slate-500 ml-2">研究人员</span></h3>
-                        <p class="text-slate-500 italic mt-4">简介正在整理中...</p>
+                    <div id="bio-xiexiaobin" class="bio-details bg-slate-50 px-6">
+                        <div class="border-t pt-4">
+                            <h4 class="section-title-sm mb-4">工作与教育履历</h4>
+                            <div class="grid md:grid-cols-2 gap-6 text-xs text-slate-600">
+                                <div class="space-y-3">
+                                    <p><strong>2025.10 - 至今：</strong>华南师范大学 华南先进光电子研究院，特聘研究员</p>
+                                    <p><strong>2021.11 - 2025.09：</strong>分析测试中心，特聘研究员</p>
+                                    <p><strong>2020.09 - 2021.10：</strong>比利时安特卫普大学 EMAT，博士后</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <p><strong>2016.02 - 2020.06：</strong>荷兰乌特勒支大学，博士（物理与天文系，德拜纳米材料科学研究所）</p>
+                                    <p><strong>2015.07 - 2016.01：</strong>物理系，研究助理</p>
+                                    <p><strong>2013.07 - 2015.07：</strong>纳米医学技术研究中心，联合培养研究生</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -359,6 +382,7 @@
                 bio.classList.remove('open');
                 if (id === 'bio-wangda') btnText.innerText = '查看完整履历与人才培养计划';
                 else if (id === 'bio-wangsong') btnText.innerText = '展开个人简介与研究方向';
+                else if (id === 'bio-xiexiaobin') btnText.innerText = '展开详细履历';
                 else btnText.innerText = '展开详细信息及招生说明';
                 icon.style.transform = 'rotate(0deg)';
             } else {
