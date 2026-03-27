@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际合作 - 王达课题组</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+        .nav-link { padding: 20px 15px; display: inline-block; font-weight: 500; color: #333; transition: all 0.3s; }
+        .nav-link:hover { color: #004299; }
+        .active-nav { color: #004299; border-bottom: 3px solid #004299; }
+
+        /* 统一的巨幕背景样式 */
+        .hero-gradient {
+            background: linear-gradient(rgba(0,30,80,0.85), rgba(0,30,80,0.85)),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .pub-item { border-bottom: 1px solid #eee; padding: 15px 0; color: #334155; }
+    </style>
+</head>
+<body class="bg-white text-slate-800">
+
+    <!-- 导航栏 -->
+    <header class="border-b shadow-sm sticky top-0 bg-white z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center py-4">
+                <div class="text-2xl font-bold text-blue-900 tracking-tighter">
+                    软物质与先进结构表征课题组
+                </div>
+                <div class="ml-4 pl-4 border-l text-sm text-slate-500 hidden lg:block">
+                    华南师范大学 · 华南先进光电子研究院
+                </div>
+            </div>
+            <nav class="flex">
+                <<a href="index.html" class="nav-link active-nav">首页</a>
+                <a href="research.html" class="nav-link">研究方向</a>
+                <a href="members.html" class="nav-link">成员介绍</a>
+                <a href="publications.html" class="nav-link">成果发表</a>
+                <a href="activities.html" class="nav-link">活动专栏</a>
+                <a href="corrption.html" class="nav-link">国际合作</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 统一风格巨幕 -->
+    <section class="hero-gradient h-[300px] flex items-center justify-center text-white">
+        <div class="text-center px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">国际合作</h1>
+            <p class="text-blue-200">International cooperation</p>
+        </div>
+    </section>
